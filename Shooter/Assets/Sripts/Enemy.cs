@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Enemy : MonoBehaviour
 {
     public float speed;
@@ -17,6 +18,18 @@ public class Enemy : MonoBehaviour
 
     public GameObject goBullet;
     public GameObject goPlayer;
+
+    public int nDmgPoint;
+
+    public ObjectManager objManager;
+
+    public string name;
+    
+
+
+   
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -40,10 +53,13 @@ public class Enemy : MonoBehaviour
         {
             return;
         }
+         
+        // GameObject createBullet = Instantiate(goBullet, transform.position, Quaternion.identity);
+        GameObject createBullet = objManager.MakeObject("EnemyBullet");
+        createBullet.transform.position = transform.position;
 
-        GameObject createBullet = Instantiate(goBullet, transform.position, Quaternion.identity);
         Rigidbody2D rd = createBullet.GetComponent<Rigidbody2D>();
-
+        
         Vector3 dirVec = goPlayer.transform.position - transform.position;
 
         rd.AddForce(dirVec.normalized * 3, ForceMode2D.Impulse);
@@ -56,7 +72,6 @@ public class Enemy : MonoBehaviour
         curBulletDelay += Time.deltaTime;
     }
 
-
     void ReturnSprite()
     {
         spriteRenderer.sprite = sprites[0];
@@ -67,13 +82,19 @@ public class Enemy : MonoBehaviour
 
         if(collision.gameObject.tag == "Border")
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
+            
+            // Destroy(gameObject);
+
+            
         }
         else if(collision.gameObject.tag == "PlayerBullet")
         {
             Bullet bullet = collision.gameObject.GetComponent<Bullet>();
             OnHit(bullet.power);
-            Destroy(collision.gameObject);
+            
+            collision.gameObject.SetActive(false);
+            // Destroy(collision.gameObject);
         }
     }
 
@@ -87,7 +108,19 @@ public class Enemy : MonoBehaviour
 
         if(health <= 0)
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
+            // Destroy(gameObject);
+
+            
+            
+
+            Player playerLogic = goPlayer.GetComponent<Player>();
+            playerLogic.nScore += nDmgPoint;
         }
+    }
+
+    private void OnEanble()
+    {
+        health = 10;
     }
 }
