@@ -59,9 +59,17 @@
     <Compile Include="Assets\Sripts\Bullet.cs" />
     <Compile Include="Assets\Sripts\Player.cs" />
     <Compile Include="Assets\Sripts\GameManager.cs" />
-    <Compile Include="Assets\Sripts\Enemy.cs" />
-    <Compile Include="Assets\Sripts\BackGround.cs" />
     <Compile Include="Assets\Sripts\ObjectManager.cs" />
+    <Compile Include="Assets\Sripts\BackGround.cs" />
+    <Compile Include="Assets\Sripts\Enemy.cs" />
+    <Compile Include="Assets\Sripts\WeaponManager.cs" />
+    <Compile Include="Assets\Sripts\Bullet_1.cs" />
+    <Compile Include="Assets\Sripts\PlayerBullet.cs" />
+    <Compile Include="Assets\Sripts\Bullet_0.cs" />
+    <Compile Include="Assets\Sripts\Flight.cs" />
+    <Compile Include="Assets\Sripts\TriangleFlight.cs" />
+    <Compile Include="Assets\Sripts\CircleFlight.cs" />
+    <Compile Include="Assets\Sripts\FlightGeerator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Resources\stage.txt" />

@@ -23,6 +23,7 @@ public class ObjectManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        return;
         goEnemy1 = new GameObject[10];
         goEnemy2 = new GameObject[2];
 

@@ -27,6 +27,9 @@ public class Player : MonoBehaviour
 
     public int nScore;
 
+    public ObjectManager objManager;
+    public WeaponManager weaponManager;
+
 
 
     // Start is called before the first frame update
@@ -47,15 +50,27 @@ public class Player : MonoBehaviour
 
     private void Fire()
     {
-        if(!Input.GetButton("Fire1"))
+        if(Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            weaponManager.ChangeToBullet_0();
+            weaponManager.Fire(gameObject);
+        }
+        if(Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            weaponManager.ChangeToBullet_1();
+            weaponManager.Fire(gameObject);
+        }
+
+
+        //weaponManager.Fire(gameObject);
+
+        return;
+
+        if (curBulletDelay < maxBulletDelay)
         {
             return;
         }
 
-        if(curBulletDelay < maxBulletDelay)
-        {
-            return;
-        }
 
         GameObject bullet = Instantiate(goBullet, transform.position, Quaternion.identity);
         Rigidbody2D rigid = bullet.GetComponent<Rigidbody2D>();

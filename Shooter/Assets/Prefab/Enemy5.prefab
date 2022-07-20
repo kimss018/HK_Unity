@@ -162,5 +162,4 @@ MonoBehaviour:
   goPlayer: {fileID: 0}
   nDmgPoint: 0
   objManager: {fileID: 0}
-  name: 
-  anim: {fileID: 0}
+  name: A

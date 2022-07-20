@@ -76,7 +76,9 @@ public class GameManager : MonoBehaviour
         }
         stringReader.Close();
 
-        nextEnemySpawnDelay = spawnList[0].delay;
+        if (spawnList.Count <= 0)
+            return;
+        // nextEnemySpawnDelay = spawnList[0].delay;
 
     }
 
@@ -101,15 +103,22 @@ public class GameManager : MonoBehaviour
         curEnemySpawnDelay += Time.deltaTime;
     }
     
+   
 
     void SpawnEnemy()
     {
+        /*
         if(curEnemySpawnDelay < nextEnemySpawnDelay)
         {
             return;
         }
+        */
+
+        if (spawnList.Count <= 0)
+            return;
 
         int enemyIdx = 0;
+
         switch(spawnList[spawnIdx].type)
         {
             case "A":
